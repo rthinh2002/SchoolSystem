@@ -17,6 +17,9 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -43,6 +46,10 @@ public class Controller implements Initializable {
 
     private Scene signUpScene;
 
+    private DBConnection handler;
+    private Connection connection;
+    private PreparedStatement preparedStatement;
+
     @FXML
     void initialize() {
         assert username != null : "fx:id=\"username\" was not injected: check your FXML file 'sample.fxml'.";
@@ -62,6 +69,8 @@ public class Controller implements Initializable {
 
         password.setStyle("-fx-prompt-text-fill: #C5C3C3");
 
+        handler = new DBConnection();
+
     }
 
     @FXML
@@ -70,13 +79,40 @@ public class Controller implements Initializable {
         PauseTransition pause = new PauseTransition();
         pause.setDuration(Duration.seconds(2));
         pause.setOnFinished(ev -> {
-            System.out.println("Login successfully");
             loadingImage.setVisible(false);
         });
-        //prepare to connect to database to retrieve the information
-        DBConnection connect = new DBConnection();
-        Connection connection = connect.getConnection();
         pause.play();
+
+        //Connect to database and retrieve information
+        connection = handler.getConnection();
+        String query = "SELECT * FROM schoolsystemlogininfo WHERE user_name = ? AND pass_word = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, username.getText());
+            preparedStatement.setString(2, password.getText());
+            ResultSet rs = preparedStatement.executeQuery();
+
+            int count = 0;
+
+            while(rs.next()){
+                count++;
+            }
+
+            if(count == 1){
+                System.out.println("Login successfully");
+            } else {
+                System.out.println("Invalid username and password");
+            }
+        } catch (SQLException ev){
+            ev.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException ev2){
+                ev2.printStackTrace();
+            }
+        }
     }
 
     @FXML
