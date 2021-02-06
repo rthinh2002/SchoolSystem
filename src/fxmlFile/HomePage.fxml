@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="717.0" prefWidth="972.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFile.HomePage">
+   <children>
+      <Pane prefHeight="718.0" prefWidth="235.0" style="-fx-background-color: #9FE2BF;">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/5517b08808eae175aedea67ba3314c75-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="103.0" prefHeight="89.0" prefWidth="215.0" style="-fx-font-weight: BOLD;" text="SCHOOL SYSTEM">
+               <font>
+                  <Font name="Calisto MT" size="21.0" />
+               </font>
+            </Label>
+            <Line endX="32.0" layoutX="101.0" layoutY="192.0" startX="-100.0" />
+            <AnchorPane layoutX="-2.0" layoutY="211.0" prefHeight="101.0" prefWidth="235.0">
+               <children>
+                  <Label layoutX="17.0" prefHeight="34.0" prefWidth="127.0" text="Welcome to the">
+                     <font>
+                        <Font name="Bodoni MT" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="17.0" layoutY="34.0" prefHeight="34.0" prefWidth="190.0" text="School Managing System">
+                     <font>
+                        <Font name="Bodoni MT" size="17.0" />
+                     </font>
+                  </Label>
+                  <Line endX="79.5" endY="86.0" startY="86.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="3.0" layoutY="312.0" prefHeight="286.0" prefWidth="215.0">
+               <children>
+                  <Label layoutX="13.0" layoutY="-36.0" prefHeight="101.0" prefWidth="163.0" style="-fx-font-weight: BOLD;" text="DASHBOARD">
+                     <font>
+                        <Font name="Calisto MT" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,5 +1,5 @@
 package javaFile;
-import Database.DBConnection;
+import Database.*;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
