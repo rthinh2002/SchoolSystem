@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="717.0" prefWidth="972.0" style="-fx-background-color: #CDFBC9;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFile.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="717.0" prefWidth="972.0" style="-fx-background-color: #F0F3F4;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFile.Controller">
     <children>
         <Button fx:id="loginButton" layoutX="335.0" layoutY="417.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="55.0" prefWidth="303.0" style="-fx-background-color: #757575;" text="LOGIN" textFill="WHITE">
             <font>
@@ -27,7 +27,7 @@
                 <Font name="Arial Black" size="20.0" />
             </font>
         </Button>
-        <Button fx:id="forgotPassButton" layoutX="376.0" layoutY="527.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: #CDFBC9;" text="Forgot Your Password?" underline="true">
+        <Button fx:id="forgotPassButton" layoutX="376.0" layoutY="527.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: #F0F3F4;" text="Forgot Your Password?" underline="true">
             <font>
                 <Font name="Arial" size="16.0" />
             </font>

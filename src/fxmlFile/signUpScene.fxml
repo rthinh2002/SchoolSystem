@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="717.0" prefWidth="972.0" style="-fx-background-color: #CDFBC9;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFile.signUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="717.0" prefWidth="972.0" style="-fx-background-color: #F0F3F4;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFile.signUpController">
     <children>
         <Button fx:id="signUpButton" layoutX="335.0" layoutY="551.0" mnemonicParsing="false" onAction="#signUpAction" prefHeight="55.0" prefWidth="303.0" style="-fx-background-color: #757575; -fx-font-size: 30;" text="Sign-Up" textFill="WHITE">
             <font>

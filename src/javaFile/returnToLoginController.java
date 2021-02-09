@@ -5,34 +5,48 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class returnToLoginController {
 
     @FXML
-    private JFXButton okayButton;
+    private JFXButton noButton;
 
-    private Stage window = new Stage();
+    private Button handlingButton;
 
-    public void display() { //calling the login scene
+    @FXML
+    public void noButtonClicked(ActionEvent event){
+        noButton.getScene().getWindow().hide();
+    } //close the stage
+
+    @FXML
+    public void yesButtonClicked(ActionEvent event){
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/fxmlFile/returnToLogin.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlFile/loginScene.fxml"));
+            Parent root = loader.load();
+
+            Stage window = new Stage();
             Scene scene = new Scene(root);
-            window.initModality(Modality.APPLICATION_MODAL);
             window.setScene(scene);
             window.setResizable(false);
             window.show();
+
+            noButton.getScene().getWindow().hide();
+            this.handlingButton.getScene().getWindow().hide();
+
+
         } catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    @FXML
-    public void okayButtonClicked(ActionEvent event){
-        okayButton.getScene().getWindow().hide();
-    } //close the stage
+    public void passButton(Button button){ //receive the button from signUpController controller
+        this.handlingButton = button;
+    }
 
 }

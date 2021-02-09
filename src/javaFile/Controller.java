@@ -13,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -101,6 +100,8 @@ public class Controller implements Initializable {
 
             if(count == 1){
                 System.out.println("Login successfully");
+
+                displayHomePage();
             } else {
                 System.out.println("Invalid username and password");
             }
@@ -125,6 +126,26 @@ public class Controller implements Initializable {
         signUp.setScene(signUpScene);
         signUp.show();
         signUp.setResizable(false);
+    }
+
+    public void displayHomePage(){
+        loginButton.getScene().getWindow().hide();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlFile/HomePage.fxml"));
+            Parent root = loader.load();
+
+            //get controller of the homepage
+            HomePage homePageController = loader.getController();
+            homePageController.getMessage(username.getText());
+
+            Stage window = new Stage();
+            Scene scene = new Scene(root);
+            window.setScene(scene);
+            window.show();
+            window.setResizable(false);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 }

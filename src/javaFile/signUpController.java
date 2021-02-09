@@ -1,5 +1,6 @@
 package javaFile;
 import Database.*;
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -31,12 +33,6 @@ public class signUpController implements Initializable {
     public Button signUpButton;
 
     @FXML
-    private Button loginButton;
-
-    @FXML
-    private ImageView logoImage;
-
-    @FXML
     private ImageView loadingImage;
 
     @FXML
@@ -52,9 +48,6 @@ public class signUpController implements Initializable {
     private Connection connection;
     private DBConnection handler;
     private PreparedStatement preparedStatement;
-
-
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -123,14 +116,14 @@ public class signUpController implements Initializable {
             } catch (SQLException el){
                 el.printStackTrace();
             }
-            returnToLogin.display(); //display to message that signup successfully
+            displayAlertScene(); //display to message that signup successfully
         }
 
     }
 
     @FXML
     public void loginAction(ActionEvent e) throws IOException { //handling when user click login button
-        closeProgram(signUpButton);
+        closeProgram();
 
         Stage loginStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("/fxmlFile/loginScene.fxml"));
@@ -140,7 +133,28 @@ public class signUpController implements Initializable {
         loginStage.show();
     }
 
-    public void closeProgram(Button button){
-        button.getScene().getWindow().hide();
+    public void closeProgram(){
+        signUpButton.getScene().getWindow().hide();
     }//close the program
+
+    public void displayAlertScene() { //calling the login scene
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlFile/returnToLogin.fxml"));
+            Stage window = new Stage();
+            Parent root = loader.load();
+
+            //passing the button
+            returnToLoginController returnToLoginController = loader.getController();
+            returnToLoginController.passButton(signUpButton);
+
+
+            Scene scene = new Scene(root);
+            window.initModality(Modality.APPLICATION_MODAL); //this must be handle before process any further
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
