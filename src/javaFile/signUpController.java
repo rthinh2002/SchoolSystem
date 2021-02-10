@@ -1,7 +1,7 @@
 package javaFile;
 import Database.*;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.animation.PauseTransition;
@@ -12,16 +12,20 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class signUpController implements Initializable {
@@ -43,6 +47,9 @@ public class signUpController implements Initializable {
 
     @FXML
     private JFXTextField role;
+
+    @FXML
+    private DatePicker dobField;
 
     //variable to connect to database
     private Connection connection;
@@ -92,11 +99,15 @@ public class signUpController implements Initializable {
             role.setStyle("-fx-prompt-text-fill: #E72424");
         }
 
+        if(dobField.getValue() == null){
+            dobField.setPromptText("Missing date of birth");
+        }
+
 
         if(!username.getText().isEmpty() && !password.getText().isEmpty() && !genderChoiceBox.getValue().isEmpty() && !role.getText().isEmpty()) { //user correctly enter all the field
             //sending to database
-            String insert = "INSERT INTO schoolsystemlogininfo(user_name, pass_word, gender, work_role)"
-                    +" VALUES(?, ?, ?, ?)"; //query for mySql
+            String insert = "INSERT INTO schoolsystemlogininfo(user_name, pass_word, gender, work_role, DOB)"
+                    +" VALUES(?, ?, ?, ?, ?)"; //query for mySql
             connection = handler.getConnection(); //getting the connection to the sql server
 
             //create preparedStatement to insert into the query
@@ -111,6 +122,7 @@ public class signUpController implements Initializable {
                 preparedStatement.setString(2, password.getText());
                 preparedStatement.setString(3, genderChoiceBox.getValue());
                 preparedStatement.setString(4, role.getText());
+                preparedStatement.setString(5, dobField.getValue().toString());
 
                 preparedStatement.executeUpdate(); //update the query
             } catch (SQLException el){

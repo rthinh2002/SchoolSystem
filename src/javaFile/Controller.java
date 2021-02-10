@@ -49,18 +49,6 @@ public class Controller implements Initializable {
     private Connection connection;
     private PreparedStatement preparedStatement;
 
-    @FXML
-    void initialize() {
-        assert username != null : "fx:id=\"username\" was not injected: check your FXML file 'sample.fxml'.";
-        assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'sample.fxml'.";
-        assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert signUpButton != null : "fx:id=\"signUpButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert forgotPassButton != null : "fx:id=\"forgotPassButton\" was not injected: check your FXML file 'sample.fxml'.";
-        assert logoImage != null : "fx:id=\"logoImage\" was not injected: check your FXML file 'sample.fxml'.";
-        assert loadingImage != null : "fx:id=\"loadingImage\" was not injected: check your FXML file 'sample.fxml'.";
-
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadingImage.setVisible(false);
@@ -76,44 +64,46 @@ public class Controller implements Initializable {
     public void loginAction(ActionEvent e){ //perform when user click the login button
         loadingImage.setVisible(true);
         PauseTransition pause = new PauseTransition();
-        pause.setDuration(Duration.seconds(2));
+        pause.setDuration(Duration.seconds(1));
         pause.setOnFinished(ev -> {
             loadingImage.setVisible(false);
+
+            //Connect to database and retrieve information
+            connection = handler.getConnection();
+            String query = "SELECT * FROM schoolsystemlogininfo WHERE user_name = ? AND pass_word = ?";
+            String name = "";
+            try {
+                preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, username.getText());
+                preparedStatement.setString(2, password.getText());
+                ResultSet rs = preparedStatement.executeQuery();
+
+                int count = 0;
+
+                while(rs.next()){
+                    count++;
+                    name = rs.getString("user_name");
+                    System.out.println(name);
+                }
+
+                if(count == 1){
+                    System.out.println("Login successfully");
+
+                    displayHomePage(name);
+                } else {
+                    System.out.println("Invalid username and password");
+                }
+            } catch (SQLException ev3){
+                ev3.printStackTrace();
+            } finally {
+                try {
+                    connection.close();
+                } catch (SQLException ev2){
+                    ev2.printStackTrace();
+                }
+            }
         });
         pause.play();
-
-        //Connect to database and retrieve information
-        connection = handler.getConnection();
-        String query = "SELECT * FROM schoolsystemlogininfo WHERE user_name = ? AND pass_word = ?";
-
-        try {
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, username.getText());
-            preparedStatement.setString(2, password.getText());
-            ResultSet rs = preparedStatement.executeQuery();
-
-            int count = 0;
-
-            while(rs.next()){
-                count++;
-            }
-
-            if(count == 1){
-                System.out.println("Login successfully");
-
-                displayHomePage();
-            } else {
-                System.out.println("Invalid username and password");
-            }
-        } catch (SQLException ev){
-            ev.printStackTrace();
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException ev2){
-                ev2.printStackTrace();
-            }
-        }
     }
 
     @FXML
@@ -128,7 +118,7 @@ public class Controller implements Initializable {
         signUp.setResizable(false);
     }
 
-    public void displayHomePage(){
+    public void displayHomePage(String name){
         loginButton.getScene().getWindow().hide();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlFile/HomePage.fxml"));
@@ -137,6 +127,8 @@ public class Controller implements Initializable {
             //get controller of the homepage
             HomePage homePageController = loader.getController();
             homePageController.getMessage(username.getText());
+            homePageController.receivingTheButton(loginButton);
+            homePageController.receivingUserNameAndConnectToDatabase(name);
 
             Stage window = new Stage();
             Scene scene = new Scene(root);

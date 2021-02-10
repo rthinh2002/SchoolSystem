@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -28,6 +29,11 @@
                   <Font name="Bradley Hand ITC" size="30.0" />
                </font>
             </Label>
+            <JFXButton fx:id="logoutButton" alignment="CENTER" layoutX="493.0" layoutY="2.0" onAction="#logoutButtonClicked" prefHeight="41.0" prefWidth="167.0" style="-fx-background-color: #FFFFFF;" text="LOG OUT">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="25.0" />
+               </font>
+            </JFXButton>
          </children>
       </Pane>
       <AnchorPane prefHeight="725.0" prefWidth="318.0" style="-fx-background-color: #2E4053;">
@@ -84,5 +90,45 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <JFXTextField fx:id="userNameTextField" editable="false" layoutX="641.0" layoutY="290.0" prefHeight="41.0" prefWidth="254.0" promptText="NONE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="421.0" layoutY="292.0" prefHeight="40.0" prefWidth="174.0" text="User name: ">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="421.0" layoutY="380.0" prefHeight="40.0" prefWidth="174.0" text="Gender: ">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="421.0" layoutY="469.0" prefHeight="40.0" prefWidth="201.0" text="Date of Birth:">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="421.0" layoutY="552.0" prefHeight="40.0" prefWidth="201.0" text="Role: ">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="30.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="genderTextField" editable="false" layoutX="641.0" layoutY="378.0" prefHeight="41.0" prefWidth="254.0" promptText="MALE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="dobTextField" editable="false" layoutX="641.0" layoutY="469.0" prefHeight="41.0" prefWidth="254.0" promptText="00/00/0000">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="roleField" editable="false" layoutX="641.0" layoutY="550.0" prefHeight="41.0" prefWidth="254.0" promptText="NONE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>
