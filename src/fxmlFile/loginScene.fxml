@@ -27,7 +27,7 @@
                 <Font name="Arial Black" size="20.0" />
             </font>
         </Button>
-        <Button fx:id="forgotPassButton" layoutX="376.0" layoutY="527.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: #F0F3F4;" text="Forgot Your Password?" underline="true">
+        <Button fx:id="forgotPassButton" layoutX="376.0" layoutY="527.0" mnemonicParsing="false" onAction="#forgotPassClicked" prefHeight="25.0" prefWidth="221.0" style="-fx-background-color: #F0F3F4;" text="Forgot Your Password?" underline="true">
             <font>
                 <Font name="Arial" size="16.0" />
             </font>

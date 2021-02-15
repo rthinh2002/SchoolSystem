@@ -9,10 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import javax.swing.text.SimpleAttributeSet;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -88,9 +91,12 @@ public class Controller implements Initializable {
 
                 if(count == 1){
                     System.out.println("Login successfully");
-
                     displayHomePage(name);
                 } else {
+                    Alert alertBox = new Alert(Alert.AlertType.ERROR);
+                    alertBox.setHeaderText(null);
+                    alertBox.setContentText("Incorrect username or password");
+                    alertBox.show();
                     System.out.println("Invalid username and password");
                 }
             } catch (SQLException ev3){
@@ -135,6 +141,21 @@ public class Controller implements Initializable {
             window.setScene(scene);
             window.show();
             window.setResizable(false);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void forgotPassClicked(ActionEvent event){
+        loginButton.getScene().getWindow().hide();
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("/fxmlFile/forgotPassword.fxml"));
+            Stage window = new Stage();
+            Scene scene = new Scene(root);
+            window.setScene(scene);
+            window.setResizable(false);
+            window.show();
         } catch (IOException e){
             e.printStackTrace();
         }

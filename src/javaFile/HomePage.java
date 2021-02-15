@@ -1,5 +1,7 @@
 package javaFile;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPopup;
+import com.jfoenix.controls.JFXRippler;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,21 +22,26 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import Database.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class HomePage implements Initializable {
 
     @FXML
-    private Label timeLabel;
+    private Pane horizontalMenu;
 
     @FXML
     private Label welcome;
 
     @FXML
-    private JFXButton classesButton;
+    private Label labelMenu;
 
     @FXML
-    private JFXButton logoutButton;
+    private Label timeLabel;
+
+    @FXML
+    private JFXButton classesButton;
 
     @FXML
     private JFXTextField userNameTextField;
@@ -47,6 +54,9 @@ public class HomePage implements Initializable {
 
     @FXML
     private JFXTextField roleField;
+
+    @FXML
+    private VBox overflowContainer;
 
     private Button handlingLoginSceneButton;
 
@@ -61,13 +71,19 @@ public class HomePage implements Initializable {
         timeLabel.setText(formatter.format(now));
     }
 
+    public void getMessage(String message){
+        welcome.setText("Welcome, "+message);
+    }
+
+    public void receivingTheButton(Button handlingLoginSceneButton){
+        this.handlingLoginSceneButton = handlingLoginSceneButton;
+    }
+
     @FXML
-    public void logoutButtonClicked(ActionEvent event){
-        this.handlingLoginSceneButton.getScene().getWindow().hide();
-        this.logoutButton.getScene().getWindow().hide();
+    public void logOutButtonClicked(ActionEvent event){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlFile/loginScene.fxml"));
-            Parent root = loader.load();
+            classesButton.getScene().getWindow().hide();
+            Parent root = FXMLLoader.load(getClass().getResource("/fxmlFile/loginScene.fxml"));
             Stage window = new Stage();
             Scene scene = new Scene(root);
             window.setScene(scene);
@@ -78,19 +94,10 @@ public class HomePage implements Initializable {
         }
     }
 
-    public void getMessage(String message){
-        welcome.setText("Welcome, "+message);
-    }
-
-    public void receivingTheButton(Button handlingLoginSceneButton){
-        this.handlingLoginSceneButton = handlingLoginSceneButton;
-    }
-
     public void receivingUserNameAndConnectToDatabase(String username){
         handler = new DBConnection();
         conn = handler.getConnection();
         String query = "SELECT * FROM schoolsystemlogininfo WHERE user_name = ?";
-        System.out.println(username);
         try{
             preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1, username);
