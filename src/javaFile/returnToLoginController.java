@@ -45,6 +45,7 @@ public class returnToLoginController {
         }
     }
 
+    //inner method
     public void passButton(Button button){ //receive the button from signUpController controller
         this.handlingButton = button;
     }

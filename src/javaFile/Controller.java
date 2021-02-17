@@ -124,28 +124,6 @@ public class Controller implements Initializable {
         signUp.setResizable(false);
     }
 
-    public void displayHomePage(String name){
-        loginButton.getScene().getWindow().hide();
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlFile/HomePage.fxml"));
-            Parent root = loader.load();
-
-            //get controller of the homepage
-            HomePage homePageController = loader.getController();
-            homePageController.getMessage(username.getText());
-            homePageController.receivingTheButton(loginButton);
-            homePageController.receivingUserNameAndConnectToDatabase(name);
-
-            Stage window = new Stage();
-            Scene scene = new Scene(root);
-            window.setScene(scene);
-            window.show();
-            window.setResizable(false);
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     public void forgotPassClicked(ActionEvent event){
         loginButton.getScene().getWindow().hide();
@@ -156,6 +134,27 @@ public class Controller implements Initializable {
             window.setScene(scene);
             window.setResizable(false);
             window.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    //inner class method
+    public void displayHomePage(String name){
+        loginButton.getScene().getWindow().hide();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlFile/HomePage.fxml"));
+            Parent root = loader.load();
+
+            //get controller of the homepage
+            HomePage homePageController = loader.getController();
+            homePageController.createMainPage(username.getText(), name);
+
+            Stage window = new Stage();
+            Scene scene = new Scene(root);
+            window.setScene(scene);
+            window.show();
+            window.setResizable(false);
         } catch (IOException e){
             e.printStackTrace();
         }

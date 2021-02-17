@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="classesAnchorPane" prefHeight="725.0" prefWidth="667.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="156.0" prefWidth="667.0" style="-fx-background-color: #F9EBEA;">
+         <children>
+            <Label layoutX="34.0" layoutY="117.0" prefHeight="32.0" prefWidth="218.0" text="Your Classes">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="33.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <JFXTreeTableView layoutX="41.0" layoutY="174.0" prefHeight="391.0" prefWidth="586.0">
+         <columns>
+            <TreeTableColumn prefWidth="181.0" text="Class Name" />
+            <TreeTableColumn minWidth="0.0" prefWidth="134.0" text="Categories" />
+            <TreeTableColumn prefWidth="137.0" text="Number of students" />
+            <TreeTableColumn prefWidth="133.0" text="Available" />
+         </columns>
+      </JFXTreeTableView>
+      <JFXButton layoutX="270.0" layoutY="610.0" prefHeight="55.0" prefWidth="127.0" style="-fx-background-color: #BFC9CA; -fx-background-radius: 30;" text="Add Classes">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

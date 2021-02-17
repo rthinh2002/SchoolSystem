@@ -145,7 +145,8 @@ public class signUpController implements Initializable {
         loginStage.show();
     }
 
-    public void closeProgram(){
+    //inner method
+    private void closeProgram(){
         signUpButton.getScene().getWindow().hide();
     }//close the program
 

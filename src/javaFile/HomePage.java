@@ -1,41 +1,26 @@
 package javaFile;
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPopup;
-import com.jfoenix.controls.JFXRippler;
-import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
-import Database.*;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
+import javaFile.HomeScreenController.*;
 import javafx.stage.Stage;
 
 public class HomePage implements Initializable {
 
     @FXML
-    private Pane horizontalMenu;
-
-    @FXML
-    private Label welcome;
-
-    @FXML
-    private Label labelMenu;
+    private AnchorPane homeAnchor;
 
     @FXML
     private Label timeLabel;
@@ -43,26 +28,9 @@ public class HomePage implements Initializable {
     @FXML
     private JFXButton classesButton;
 
-    @FXML
-    private JFXTextField userNameTextField;
 
-    @FXML
-    private JFXTextField genderTextField;
-
-    @FXML
-    private JFXTextField dobTextField;
-
-    @FXML
-    private JFXTextField roleField;
-
-    @FXML
-    private VBox overflowContainer;
-
-    private Button handlingLoginSceneButton;
-
-    private DBConnection handler;
-    private PreparedStatement preparedStatement;
-    private Connection conn;
+    private String username = "";
+    private String message = "";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -71,12 +39,15 @@ public class HomePage implements Initializable {
         timeLabel.setText(formatter.format(now));
     }
 
-    public void getMessage(String message){
-        welcome.setText("Welcome, "+message);
+    @FXML
+    public void classesButtonClicked(ActionEvent event) throws IOException{
+        AnchorPane anchor = new AnchorPane();
+        FXMLLoader loader = setScene(anchor, "/fxmlFile/HomePageButtonScene/ClassesScene.fxml");
     }
 
-    public void receivingTheButton(Button handlingLoginSceneButton){
-        this.handlingLoginSceneButton = handlingLoginSceneButton;
+    @FXML
+    public void profileButtonClicked(ActionEvent event) throws IOException{
+        createMainPage(this.message, this.username);
     }
 
     @FXML
@@ -94,27 +65,27 @@ public class HomePage implements Initializable {
         }
     }
 
-    public void receivingUserNameAndConnectToDatabase(String username){
-        handler = new DBConnection();
-        conn = handler.getConnection();
-        String query = "SELECT * FROM schoolsystemlogininfo WHERE user_name = ?";
-        try{
-            preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setString(1, username);
-            ResultSet rs = preparedStatement.executeQuery();
-            if(rs.next()) {
-                String name = rs.getString("user_name");
-                String gender = rs.getString("gender");
-                String role = rs.getString("work_role");
-                String dob = rs.getString("DOB");
-
-                this.userNameTextField.setText(name);
-                this.genderTextField.setText(gender);
-                this.roleField.setText(role);
-                this.dobTextField.setText(dob);
-            }
-        } catch (SQLException e){
-            e.printStackTrace();
-        }
+    private FXMLLoader setScene(AnchorPane anchor, String url) throws IOException{ //changing scene
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+        anchor = loader.load();
+        homeAnchor.getChildren().clear();
+        homeAnchor.getChildren().setAll(anchor);
+        return loader;
     }
+
+    public void createMainPage(String message, String username) throws IOException{
+        AnchorPane anchor = new AnchorPane();
+        FXMLLoader loader = setScene(anchor, "/fxmlFile/HomePageButtonScene/InformationScene.fxml");
+
+        this.username = username;
+        this.message = message;
+
+        informationSceneController infor = loader.getController();
+        infor.getMessage(message);
+        infor.receivingUserNameAndConnectToDatabase(username);
+    }
+
+
+
+
 }
