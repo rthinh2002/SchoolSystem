@@ -10,9 +10,6 @@ public class DBConnection {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/company", "root", "bluesky123");
-            if(conn != null){
-                System.out.println("Connected to database successfully");
-            }
         } catch (Exception e){
             e.printStackTrace();
         }

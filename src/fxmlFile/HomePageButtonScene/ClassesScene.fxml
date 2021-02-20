@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="classesAnchorPane" prefHeight="725.0" prefWidth="667.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="classesAnchorPane" prefHeight="725.0" prefWidth="667.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFile.HomeScreenController.ClassesSceneController">
    <children>
-      <AnchorPane prefHeight="156.0" prefWidth="667.0" style="-fx-background-color: #F9EBEA;">
+      <AnchorPane prefHeight="118.0" prefWidth="667.0" style="-fx-background-color: #F9EBEA;">
          <children>
             <Label layoutX="34.0" layoutY="117.0" prefHeight="32.0" prefWidth="218.0" text="Your Classes">
                <font>
@@ -18,18 +20,27 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXTreeTableView layoutX="41.0" layoutY="174.0" prefHeight="391.0" prefWidth="586.0">
-         <columns>
-            <TreeTableColumn prefWidth="181.0" text="Class Name" />
-            <TreeTableColumn minWidth="0.0" prefWidth="134.0" text="Categories" />
-            <TreeTableColumn prefWidth="137.0" text="Number of students" />
-            <TreeTableColumn prefWidth="133.0" text="Available" />
-         </columns>
-      </JFXTreeTableView>
-      <JFXButton layoutX="270.0" layoutY="610.0" prefHeight="55.0" prefWidth="127.0" style="-fx-background-color: #BFC9CA; -fx-background-radius: 30;" text="Add Classes">
+      <JFXButton layoutX="270.0" layoutY="630.0" onAction="#addClassesClicked" prefHeight="55.0" prefWidth="127.0" style="-fx-background-color: #BFC9CA; -fx-background-radius: 30;" text="Add Classes">
          <font>
             <Font name="Berlin Sans FB" size="20.0" />
          </font>
+      </JFXButton>
+      <TableView fx:id="table" editable="true" layoutX="67.0" layoutY="182.0" prefHeight="441.0" prefWidth="534.0">
+        <columns>
+            <TableColumn fx:id="colClass" prefWidth="164.0" text="Class Name" />
+          <TableColumn fx:id="colCategories" prefWidth="165.0" text="Category" />
+          <TableColumn fx:id="colNoOfStudents" prefWidth="132.0" text="Number of Student" />
+            <TableColumn fx:id="colAvailable" prefWidth="72.0" text="Availability" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="610.0" layoutY="685.0" prefHeight="19.0" prefWidth="55.0" text=" ">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../img/pngtree-reload-vector-icon-png-image_696434.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
       </JFXButton>
    </children>
 </AnchorPane>

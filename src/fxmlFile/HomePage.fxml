@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="717.0" prefWidth="972.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFile.HomePage">
    <children>
-      <AnchorPane prefHeight="725.0" prefWidth="319.0" style="-fx-background-color: #2E4053;">
+      <AnchorPane prefHeight="725.0" prefWidth="286.0" style="-fx-background-color: #2E4053;">
          <children>
             <ImageView fitHeight="181.0" fitWidth="201.0" layoutX="50.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -29,19 +29,19 @@
                   <Font name="Brush Script MT Italic" size="32.0" />
                </font>
             </Label>
-            <AnchorPane layoutX="1.0" layoutY="179.0" prefHeight="274.0" prefWidth="305.0">
+            <AnchorPane layoutX="1.0" layoutY="179.0" prefHeight="274.0" prefWidth="252.0">
                <children>
-                  <JFXButton fx:id="classesButton" alignment="CENTER" contentDisplay="TOP" layoutX="31.0" layoutY="27.0" onAction="#classesButtonClicked" prefHeight="41.0" prefWidth="115.0" ripplerFill="WHITE" text="Classes" textFill="WHITE">
+                  <JFXButton fx:id="classesButton" alignment="CENTER" contentDisplay="TOP" layoutX="179.0" layoutY="27.0" onAction="#classesButtonClicked" prefHeight="41.0" prefWidth="115.0" ripplerFill="WHITE" text="Classes" textFill="WHITE">
                      <font>
                         <Font name="Dubai Medium" size="20.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" layoutX="21.0" layoutY="144.0" prefHeight="41.0" prefWidth="215.0" text="Students' record" textFill="WHITE">
+                  <JFXButton alignment="CENTER" layoutX="115.0" layoutY="144.0" prefHeight="41.0" prefWidth="167.0" text="Students' record" textFill="WHITE">
                      <font>
                         <Font name="Dubai Medium" size="20.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" layoutX="14.0" layoutY="81.0" prefHeight="41.0" prefWidth="197.0" text="Management" textFill="WHITE">
+                  <JFXButton alignment="CENTER" layoutX="142.0" layoutY="81.0" prefHeight="41.0" prefWidth="149.0" text="Management" textFill="WHITE">
                      <font>
                         <Font name="Dubai Medium" size="20.0" />
                      </font>
@@ -61,7 +61,7 @@
                         <Font size="96.0" />
                      </font>
                   </FontAwesomeIcon>
-                  <JFXButton alignment="CENTER" layoutX="29.0" layoutY="199.0" onAction="#profileButtonClicked" prefHeight="41.0" prefWidth="115.0" text="Profile" textFill="WHITE">
+                  <JFXButton alignment="CENTER" layoutX="199.0" layoutY="199.0" onAction="#profileButtonClicked" prefHeight="41.0" prefWidth="83.0" text="Profile" textFill="WHITE">
                      <font>
                         <Font name="Dubai Medium" size="20.0" />
                      </font>

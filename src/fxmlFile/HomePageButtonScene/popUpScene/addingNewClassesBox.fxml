@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="301.0" prefWidth="336.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFile.HomeScreenController.popUpController.addingNewClassesBoxController">
+   <children>
+      <JFXTextField fx:id="classNameTxt" layoutX="46.0" layoutY="33.0" prefHeight="25.0" prefWidth="248.0" promptText="Enter class name">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="categoriesTxt" layoutX="45.0" layoutY="81.0" prefHeight="25.0" prefWidth="248.0" promptText="Enter categories">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="numberofStudentTxt" layoutX="45.0" layoutY="134.0" prefHeight="25.0" prefWidth="248.0" promptText="Enter number of students">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="availabilityTxt" layoutX="46.0" layoutY="187.0" prefHeight="25.0" prefWidth="248.0" promptText="Enter Y or N for availability">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton fx:id="addButton" layoutX="127.0" layoutY="238.0" onAction="#addButtonClicked" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #B2BABB; -fx-background-radius: 20;" text="Add">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
