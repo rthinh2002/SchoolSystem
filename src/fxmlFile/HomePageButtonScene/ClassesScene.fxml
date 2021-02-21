@@ -4,8 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -20,7 +18,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <JFXButton layoutX="270.0" layoutY="630.0" onAction="#addClassesClicked" prefHeight="55.0" prefWidth="127.0" style="-fx-background-color: #BFC9CA; -fx-background-radius: 30;" text="Add Classes">
+      <JFXButton layoutX="376.0" layoutY="643.0" onAction="#addClassesClicked" prefHeight="55.0" prefWidth="147.0" style="-fx-background-color: #BFC9CA; -fx-background-radius: 30;" text="Add Classes">
          <font>
             <Font name="Berlin Sans FB" size="20.0" />
          </font>
@@ -33,14 +31,11 @@
             <TableColumn fx:id="colAvailable" prefWidth="72.0" text="Availability" />
         </columns>
       </TableView>
-      <JFXButton layoutX="610.0" layoutY="685.0" prefHeight="19.0" prefWidth="55.0" text=" ">
-         <graphic>
-            <ImageView fitHeight="31.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../img/pngtree-reload-vector-icon-png-image_696434.jpg" />
-               </image>
-            </ImageView>
-         </graphic>
+      <JFXButton layoutX="610.0" layoutY="685.0" prefHeight="19.0" prefWidth="55.0" text=" " />
+      <JFXButton layoutX="153.0" layoutY="643.0" onAction="#dropButtonClicked" prefHeight="55.0" prefWidth="147.0" style="-fx-background-color: #BFC9CA; -fx-background-radius: 30;" text="Drop Classes">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
       </JFXButton>
    </children>
 </AnchorPane>

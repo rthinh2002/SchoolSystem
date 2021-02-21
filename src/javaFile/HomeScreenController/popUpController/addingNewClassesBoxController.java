@@ -72,11 +72,12 @@ public class addingNewClassesBoxController {
         }
 
         if(availabilityTxt.getText().isEmpty() || !availabilityTxt.getText().equals("Y") || !availabilityTxt.getText().equals("N")){
+            availabilityTxt.clear();
             warning(availabilityTxt);
         }
 
         //insert into database
-        if(!classNameTxt.getText().isEmpty() && !categoriesTxt.getText().isEmpty() && !numberofStudentTxt.getText().isEmpty() && !availabilityTxt.getText().isEmpty()){
+        if(!classNameTxt.getText().isEmpty() && !categoriesTxt.getText().isEmpty() && !numberofStudentTxt.getText().isEmpty() && !availabilityTxt.getText().isEmpty() && (availabilityTxt.getText().equals("Y") || availabilityTxt.getText().equals("N"))){
             try {
                 pst = conn.prepareStatement(query);
                 pst.setString(1, classNameTxt.getText());
@@ -89,11 +90,11 @@ public class addingNewClassesBoxController {
                 e.printStackTrace();
             }
             addButton.getScene().getWindow().hide();
-            refreshTable();
             Alert alertBox = new Alert(Alert.AlertType.INFORMATION);
             alertBox.setHeaderText(null);
             alertBox.setContentText("Insert new class successfully");
-            alertBox.show();
+            alertBox.showAndWait();
+            refreshTable();
         }
     }
 
@@ -117,6 +118,7 @@ public class addingNewClassesBoxController {
     public void refreshTable(){ //refresh the table
         handler = new DBConnection();
         conn = handler.getConnection();
+        this.list.clear();
         try {
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM classes WHERE instructor_id = "+ this.instructorId);
 
@@ -136,7 +138,6 @@ public class addingNewClassesBoxController {
     }
 
     public void receiveList(ObservableList<ClassesTable> list){
-        list.clear();
         this.list = list;
     }
 }
