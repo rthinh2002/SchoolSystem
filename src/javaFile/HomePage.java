@@ -84,6 +84,24 @@ public class HomePage implements Initializable {
         }
     }
 
+    @FXML
+    void managementClicked(ActionEvent event) throws IOException{
+        AnchorPane anchorPane = new AnchorPane();
+        FXMLLoader loader = setScene(anchorPane, "/fxmlFile/HomePageButtonScene/StudentManaging.fxml");
+        handler = new DBConnection();
+        conn = handler.getConnection();
+        try{
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM schoolsystemlogininfo WHERE user_name = '" + this.username + "'");
+            if(rs.next()){
+                this.id = rs.getInt("id");
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        StudentManagingController studentManagingController = loader.getController();
+        studentManagingController.receiveId(this.id);
+    }
+
     private FXMLLoader setScene(AnchorPane anchor, String url) throws IOException{ //changing scene
         FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
         anchor = loader.load();

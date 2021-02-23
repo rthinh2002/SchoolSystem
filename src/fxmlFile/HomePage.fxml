@@ -41,7 +41,7 @@
                         <Font name="Dubai Medium" size="20.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton alignment="CENTER" layoutX="142.0" layoutY="81.0" prefHeight="41.0" prefWidth="149.0" text="Management" textFill="WHITE">
+                  <JFXButton alignment="CENTER" layoutX="142.0" layoutY="81.0" onAction="#managementClicked" prefHeight="41.0" prefWidth="149.0" text="Management" textFill="WHITE">
                      <font>
                         <Font name="Dubai Medium" size="20.0" />
                      </font>

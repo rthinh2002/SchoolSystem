@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="367.0" prefWidth="336.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFile.HomeScreenController.popUpController.addNewStudentController">
+   <children>
+      <JFXTextField fx:id="firstNameTxt" layoutX="39.0" layoutY="34.0" prefHeight="31.0" prefWidth="259.0" promptText="Enter first name">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="lastNameTxt" layoutX="39.0" layoutY="105.0" prefHeight="31.0" prefWidth="259.0" promptText="Enter last name">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="dobTxt" layoutX="41.0" layoutY="238.0" prefHeight="31.0" prefWidth="259.0" promptText="YYYY-MM-DD">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <ChoiceBox fx:id="genderBox" layoutX="39.0" layoutY="177.0" prefHeight="31.0" prefWidth="259.0" />
+      <JFXButton fx:id="addButton" layoutX="126.0" layoutY="306.0" onAction="#addButtonClicked" prefHeight="36.0" prefWidth="88.0" style="-fx-background-color: #BFC9CA; -fx-background-radius: 30;" text="Add">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

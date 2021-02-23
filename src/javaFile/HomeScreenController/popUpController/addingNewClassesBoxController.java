@@ -14,10 +14,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.sql.*;
 
 public class addingNewClassesBoxController {
     @FXML
@@ -71,7 +69,7 @@ public class addingNewClassesBoxController {
             }
         }
 
-        if(availabilityTxt.getText().isEmpty() || !availabilityTxt.getText().equals("Y") || !availabilityTxt.getText().equals("N")){
+        if(availabilityTxt.getText().isEmpty()){
             availabilityTxt.clear();
             warning(availabilityTxt);
         }
@@ -95,6 +93,9 @@ public class addingNewClassesBoxController {
             alertBox.setContentText("Insert new class successfully");
             alertBox.showAndWait();
             refreshTable();
+        } else if(!availabilityTxt.getText().equals("Y") || !availabilityTxt.getText().equals("N")){
+            availabilityTxt.clear();
+            warning(availabilityTxt);
         }
     }
 
