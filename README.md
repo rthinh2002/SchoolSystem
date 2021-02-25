@@ -12,5 +12,7 @@ Update 10th Feb, 2021: The home page after login validation have been created, t
 
 Update 17th Feb, 2021: The classes feature has been added, though it didn't connect to any database yet. Switching between screen in home page is now avaiable.
 
-Update 23rd Fed, 2021: The students features has been added, now we can add, delete and search students from a class, I also added error handling when the user didn't choose the class or students to drop.
+Update 23rd Feb, 2021: The students features has been added, now we can add, delete and search students from a class, I also added error handling when the user didn't choose the class or students to drop.
 Issue spotted: Their may be some similar name for students and class, the searching for the unique id will be added to make the program work fluently
+
+Update 25th Feb, 2021: All features have been implemented and is usable, the similar name and class have been fixed, signatures and photo screenshots will be upload soon, full software testing will soon start
