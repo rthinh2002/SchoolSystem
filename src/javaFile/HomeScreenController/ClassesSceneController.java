@@ -39,6 +39,9 @@ public class ClassesSceneController{
     @FXML
     private TableColumn<ClassesTable, String> colAvailable;
 
+    @FXML
+    private TableColumn<ClassesTable, Integer> idCol;
+
     private DBConnection handler;
     private Connection conn;
     private int id;
@@ -52,7 +55,8 @@ public class ClassesSceneController{
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM classes WHERE instructor_id = "+ id);
 
             while (rs.next()){ //add the infor to the Table View
-                this.list.add(new ClassesTable(rs.getString("class_name"), rs.getString("categories"), rs.getString("availability"), Integer.parseInt(rs.getString("student_number"))));
+                this.list.add(new ClassesTable(rs.getString("class_name"), rs.getString("categories"), rs.getString("availability"),
+                        Integer.parseInt(rs.getString("student_number")), Integer.parseInt(rs.getString("class_id"))));
             }
         } catch (SQLException e){
             e.printStackTrace();
@@ -62,7 +66,7 @@ public class ClassesSceneController{
         this.colCategories.setCellValueFactory(new PropertyValueFactory<>("categories"));
         this.colNoOfStudents.setCellValueFactory(new PropertyValueFactory<>("noOfStudent"));
         this.colAvailable.setCellValueFactory(new PropertyValueFactory<>("available"));
-
+        this.idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.table.setItems(list);
     }
 
@@ -83,7 +87,7 @@ public class ClassesSceneController{
         addingNewClassesBoxController addingNewClassesBoxController = loader.getController();
         addingNewClassesBoxController.receiveInstructorId(this.id);
         addingNewClassesBoxController.receiveList(list);
-        addingNewClassesBoxController.receiveTable(table, colClass, colCategories, colNoOfStudents, colAvailable);
+        addingNewClassesBoxController.receiveTable(table, colClass, colCategories, colNoOfStudents, colAvailable, idCol);
     }
 
     @FXML
@@ -105,7 +109,7 @@ public class ClassesSceneController{
             if(!result.isPresent()){ //alert box being exited
                 System.out.println("Alert box exited");
             } else if(result.get() == ButtonType.OK){ //if the user confirm to drop the class
-                String query = "DELETE FROM classes WHERE class_name = '" + classesTable.getClassName()+ "'";
+                String query = "DELETE FROM classes WHERE class_id = " + classesTable.getId();
                 try {
                     conn.createStatement().executeUpdate(query);
                 } catch (SQLException e){

@@ -23,12 +23,13 @@
             <Font name="Berlin Sans FB" size="20.0" />
          </font>
       </JFXButton>
-      <TableView fx:id="table" editable="true" layoutX="67.0" layoutY="182.0" prefHeight="441.0" prefWidth="534.0">
+      <TableView fx:id="table" editable="true" layoutX="31.0" layoutY="182.0" prefHeight="441.0" prefWidth="604.0">
         <columns>
-            <TableColumn fx:id="colClass" prefWidth="164.0" text="Class Name" />
-          <TableColumn fx:id="colCategories" prefWidth="165.0" text="Category" />
-          <TableColumn fx:id="colNoOfStudents" prefWidth="132.0" text="Number of Student" />
-            <TableColumn fx:id="colAvailable" prefWidth="72.0" text="Availability" />
+            <TableColumn fx:id="colClass" prefWidth="190.0" text="Class Name" />
+          <TableColumn fx:id="colCategories" prefWidth="121.0" text="Category" />
+          <TableColumn fx:id="colNoOfStudents" prefWidth="138.0" text="Number of Student" />
+            <TableColumn fx:id="colAvailable" prefWidth="94.0" text="Availability" />
+            <TableColumn fx:id="idCol" prefWidth="60.0" text="ID" />
         </columns>
       </TableView>
       <JFXButton layoutX="610.0" layoutY="685.0" prefHeight="19.0" prefWidth="55.0" text=" " />

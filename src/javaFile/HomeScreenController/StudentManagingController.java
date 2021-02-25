@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import Database.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javaFile.HomeScreenController.popUpController.addNewStudentController;
 
@@ -42,6 +43,9 @@ public class StudentManagingController {
     private TableColumn<StudentTable, String> dobCol;
 
     @FXML
+    private TableColumn<StudentTable, Integer> idCol;
+
+    @FXML
     private JFXListView<String> listView;
     ObservableList<StudentTable> list = FXCollections.observableArrayList();
     private int id;
@@ -66,7 +70,7 @@ public class StudentManagingController {
             window.show();
 
             addNewStudentController addNewStudentController = loader.getController();
-            addNewStudentController.setUp(this.id, className, table, firstNameCol, lastNameCol, genderCol, dobCol, list);
+            addNewStudentController.setUp(this.id, className, table, firstNameCol, lastNameCol, genderCol, dobCol, idCol, list);
         }
 
     }
@@ -97,7 +101,7 @@ public class StudentManagingController {
             if(!result.isPresent()){ //the alert box being exited
                 System.out.println("Alert box exited");
             } else if(result.get() == ButtonType.OK){
-                String query = "DELETE FROM students WHERE last_name = '" + studentTable.getLastName() + "'";
+                String query = "DELETE FROM students WHERE student_id = " + studentTable.getId();
                 try{
                     conn.createStatement().executeUpdate(query);
                 } catch (SQLException e){
@@ -145,7 +149,8 @@ public class StudentManagingController {
             ResultSet rs = conn.createStatement().executeQuery(query);
 
             while(rs.next()){
-                this.list.add(new StudentTable(rs.getString("first_name"), rs.getString("last_name"), rs.getString("gender"), rs.getString("DOB")));
+                this.list.add(new StudentTable(rs.getString("first_name"), rs.getString("last_name"),
+                        rs.getString("gender"), rs.getString("DOB"), rs.getInt("student_id")));
             }
         } catch (SQLException e){
             e.printStackTrace();
@@ -155,6 +160,7 @@ public class StudentManagingController {
         this.lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         this.genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
         this.dobCol.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        this.idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.table.setItems(list);
     }
 

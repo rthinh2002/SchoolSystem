@@ -5,12 +5,22 @@ public class ClassesTable {
     String categories;
     String available;
     int noOfStudent;
+    int id;
 
-    public ClassesTable(String className, String categories, String available, int noOfStudent) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public ClassesTable(String className, String categories, String available, int noOfStudent, int id) {
         this.className = className;
         this.categories = categories;
         this.available = available;
         this.noOfStudent = noOfStudent;
+        this.id = id;
     }
 
     public String getClassName() {

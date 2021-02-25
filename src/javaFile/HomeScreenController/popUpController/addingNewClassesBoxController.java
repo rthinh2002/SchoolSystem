@@ -43,6 +43,7 @@ public class addingNewClassesBoxController {
     private TableColumn colCategories;
     private TableColumn colNoOfStudents;
     private TableColumn colAvailable;
+    private TableColumn colId;
 
     @FXML
     void addButtonClicked(ActionEvent event) {
@@ -108,12 +109,13 @@ public class addingNewClassesBoxController {
         this.instructorId = id;
     }
 
-    public void receiveTable(TableView tableView, TableColumn colClass, TableColumn colCategories, TableColumn colNoOfStudents, TableColumn colAvailable){
+    public void receiveTable(TableView tableView, TableColumn colClass, TableColumn colCategories, TableColumn colNoOfStudents, TableColumn colAvailable, TableColumn idCol){
         this.tableView = tableView;
         this.colClass = colClass;
         this.colCategories = colCategories;
         this.colNoOfStudents = colNoOfStudents;
         this.colAvailable = colAvailable;
+        this.colId = idCol;
     }
 
     public void refreshTable(){ //refresh the table
@@ -124,7 +126,7 @@ public class addingNewClassesBoxController {
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM classes WHERE instructor_id = "+ this.instructorId);
 
             while (rs.next()){ //add the infor to the Table View
-                list.add(new ClassesTable(rs.getString("class_name"), rs.getString("categories"), rs.getString("availability"), Integer.parseInt(rs.getString("student_number"))));
+                list.add(new ClassesTable(rs.getString("class_name"), rs.getString("categories"), rs.getString("availability"), Integer.parseInt(rs.getString("student_number")), Integer.parseInt(rs.getString("class_id"))));
             }
         } catch (SQLException e){
             e.printStackTrace();
@@ -134,7 +136,7 @@ public class addingNewClassesBoxController {
         this.colCategories.setCellValueFactory(new PropertyValueFactory<>("categories"));
         this.colNoOfStudents.setCellValueFactory(new PropertyValueFactory<>("noOfStudent"));
         this.colAvailable.setCellValueFactory(new PropertyValueFactory<>("available"));
-
+        this.colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.tableView.setItems(this.list);
     }
 

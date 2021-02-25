@@ -102,6 +102,26 @@ public class HomePage implements Initializable {
         studentManagingController.receiveId(this.id);
     }
 
+    @FXML
+    void studentRecordClicked(ActionEvent event) throws IOException{
+        AnchorPane anchorPane = new AnchorPane();
+        FXMLLoader loader = setScene(anchorPane, "/fxmlFile/HomePageButtonScene/studentInformationScene.fxml");
+        handler = new DBConnection();
+        conn = handler.getConnection();
+        try{
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM schoolsystemlogininfo WHERE user_name = '" + this.username + "'");
+            if(rs.next()){
+                this.id = rs.getInt("id");
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        studentInformationController studentInformationController = loader.getController();
+        studentInformationController.receiveId(this.id);
+        studentInformationController.receiveAnchorPane(this.homeAnchor);
+        studentInformationController.receiveUserName(this.username);
+    }
+
     private FXMLLoader setScene(AnchorPane anchor, String url) throws IOException{ //changing scene
         FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
         anchor = loader.load();

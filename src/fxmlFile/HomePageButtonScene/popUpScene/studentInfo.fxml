@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="725.0" prefWidth="667.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFile.HomeScreenController.popUpController.studentInfoController">
+   <children>
+      <Region prefHeight="200.0" prefWidth="682.0" style="-fx-background-color: #F9EBEA;" />
+      <Label fx:id="nameLabel" layoutX="28.0" layoutY="169.0" prefHeight="31.0" prefWidth="512.0">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="27.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="firstNameTxt" layoutX="298.0" layoutY="268.0" prefHeight="31.0" prefWidth="259.0" promptText="First name">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="97.0" layoutY="268.0" prefHeight="31.0" prefWidth="124.0" text="First name: ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="lastNameTxt" layoutX="298.0" layoutY="332.0" prefHeight="31.0" prefWidth="259.0" promptText="Last name">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="genderTxt" layoutX="298.0" layoutY="397.0" prefHeight="31.0" prefWidth="259.0" promptText="Gender">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="dobTxt" layoutX="298.0" layoutY="464.0" prefHeight="31.0" prefWidth="259.0" promptText="Date of birth">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="idTxt" editable="false" layoutX="298.0" layoutY="525.0" prefHeight="31.0" prefWidth="259.0" promptText="Student's id">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="classTxt" editable="false" layoutX="298.0" layoutY="588.0" prefHeight="31.0" prefWidth="259.0" promptText="Class name">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="97.0" layoutY="332.0" prefHeight="31.0" prefWidth="124.0" text="Last name:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="397.0" prefHeight="31.0" prefWidth="124.0" text="Gender:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="464.0" prefHeight="31.0" prefWidth="124.0" text="DOB:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="534.0" prefHeight="31.0" prefWidth="124.0" text="ID:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="97.0" layoutY="595.0" prefHeight="31.0" prefWidth="154.0" text="Class participate:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="saveButton" layoutX="284.0" layoutY="659.0" onAction="#saveButtonClicked" prefHeight="36.0" prefWidth="88.0" style="-fx-background-color: #BFC9CA; -fx-background-radius: 30;" text="Save">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="594.0" onAction="#returnButtonClicked" prefHeight="36.0" prefWidth="88.0" style="-fx-background-color: #BFC9CA;" text="Return">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

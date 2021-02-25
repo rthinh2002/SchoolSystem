@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="725.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFile.HomeScreenController.studentInformationController">
+   <children>
+      <Region prefHeight="200.0" prefWidth="677.0" style="-fx-background-color: #F9EBEA;" />
+      <Label layoutX="33.0" layoutY="161.0" text="STUDENT'S INFORMATION">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="33.0" />
+         </font>
+      </Label>
+      <JFXListView fx:id="listView" layoutX="39.0" layoutY="240.0" prefHeight="376.0" prefWidth="200.0" />
+      <TableView fx:id="tableView" layoutX="273.0" layoutY="240.0" prefHeight="376.0" prefWidth="363.0">
+        <columns>
+          <TableColumn fx:id="firstNameCol" prefWidth="135.0" text="First name" />
+          <TableColumn fx:id="lastNameCol" prefWidth="150.0" text="Last Name" />
+            <TableColumn fx:id="idCol" prefWidth="77.0" text="ID" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="381.0" layoutY="636.0" onAction="#editButtonClicked" prefHeight="55.0" prefWidth="91.0" style="-fx-background-color: #BFC9CA; -fx-background-radius: 30;" text="Edit">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="194.0" layoutY="636.0" onAction="#viewButtonClicked" prefHeight="55.0" prefWidth="91.0" style="-fx-background-color: #BFC9CA; -fx-background-radius: 30;" text="View">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

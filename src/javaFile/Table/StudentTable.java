@@ -2,12 +2,22 @@ package javaFile.Table;
 
 public class StudentTable {
     String firstName, lastName, gender, dob;
+    int id;
 
-    public StudentTable(String firstName, String lastName, String gender, String dob) {
+    public StudentTable(String firstName, String lastName, String gender, String dob, int id) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.dob = dob;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {

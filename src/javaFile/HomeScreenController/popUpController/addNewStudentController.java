@@ -40,7 +40,7 @@ public class addNewStudentController {
     private int id;
     private String className;
     private TableView tableView;
-    private TableColumn firstNameCol, lastNameCol, genderCol, dobCol;
+    private TableColumn firstNameCol, lastNameCol, genderCol, dobCol, idCol;
     private ObservableList<StudentTable> list;
 
     @FXML
@@ -96,7 +96,7 @@ public class addNewStudentController {
     }
 
     //receive information from the other controller and set up the gender box
-    public void setUp(int id, String className, TableView table, TableColumn firstName, TableColumn lastName, TableColumn gender, TableColumn dob, ObservableList<StudentTable> list){
+    public void setUp(int id, String className, TableView table, TableColumn firstName, TableColumn lastName, TableColumn gender, TableColumn dob, TableColumn studentId,  ObservableList<StudentTable> list){
         this.id = id;
         this.className = className;
         this.tableView = table;
@@ -105,6 +105,7 @@ public class addNewStudentController {
         this.genderCol = gender;
         this.dobCol = dob;
         this.list = list;
+        this.idCol = studentId;
         genderBox.getItems().addAll("MALE", "FEMALE");
     }
 
@@ -124,7 +125,8 @@ public class addNewStudentController {
             ResultSet rs = conn.createStatement().executeQuery(query);
 
             while(rs.next()){
-                this.list.add(new StudentTable(rs.getString("first_name"), rs.getString("last_name"), rs.getString("gender"), rs.getString("DOB")));
+                this.list.add(new StudentTable(rs.getString("first_name"), rs.getString("last_name"),
+                        rs.getString("gender"), rs.getString("DOB"), rs.getInt("student_id")));
             }
         } catch (SQLException e){
             e.printStackTrace();
@@ -134,6 +136,7 @@ public class addNewStudentController {
         this.lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         this.genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
         this.dobCol.setCellValueFactory(new PropertyValueFactory<>("dob"));
+        this.idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         this.tableView.setItems(list);
     }
 
